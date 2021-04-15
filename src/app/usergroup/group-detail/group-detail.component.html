@@ -1,6 +1,9 @@
 <p-messages [(value)]="msgs" [enableService]="false"></p-messages>
 <p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
-<!-- <p-button label="查" icon="pi pi-user-plus" (click)="doQuery('');" styleClass="p-button-success" ></p-button> -->
+
+
+<!-- <button pButton pRipple type="button" icon="pi pi-user-plus" title="新增人員"
+                        class="p-button-rounded p-button-success" (click)="doGroupAddUsers();"></button> -->
 <p-table [columns]="cols" [value]="pbiusers" styleClass="p-datatable-striped" selectionMode="single">
     <ng-template pTemplate="header" let-columns>
         <tr>
@@ -12,7 +15,13 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             <td *ngFor="let col of columns">
-            {{rowData[col.field]}}
+                <div *ngIf="col.field === ''">
+                    <button pButton pRipple type="button" icon="pi pi-trash" title="移出群組"
+                        class="p-button-rounded p-button-danger" (click)="doGroupRemoveUser(rowData);"></button>
+                </div>
+                <div *ngIf="col.field !== ''">
+                    {{rowData[col.field]}}
+                </div>
             </td>
         </tr>
     </ng-template>

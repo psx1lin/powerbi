@@ -19,6 +19,7 @@ export const URLs = {
   Url_AddUser: `${SERVERpbiAD}/AddUser`,
   Url_SyncUserOA: `${SERVERpbiAD}/SyncUserOA`,
   Url_RemoveUser: `${SERVERpbiAD}/RemoveUser`,
+  Url_GetOARecautocomplete: `${SERVERpbiAD}/GetOARecautocomplete?id=`,
 
   // pbigroup
   Url_GetAllGroup: `${SERVERpbiAD}/GetAllGroup?id=`,

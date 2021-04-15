@@ -24,6 +24,8 @@ export class UsergroupComponent implements OnInit {
   user: any = {};
   cols: any[];
   pbigroups: PBIGROUP[];
+
+
   constructor(
     private router: Router,
     private loginDataService: LoginDataService,
@@ -95,6 +97,8 @@ export class UsergroupComponent implements OnInit {
     });
 
   }
+
+
 
 
 

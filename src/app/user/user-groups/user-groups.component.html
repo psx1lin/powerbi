@@ -12,7 +12,13 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             <td *ngFor="let col of columns">
-            {{rowData[col.field]}}
+                <div *ngIf="col.field === ''">
+                    <button pButton pRipple type="button" icon="pi pi-trash" title="移出群組"
+                        class="p-button-rounded p-button-danger" (click)="doGroupRemoveUser(rowData);"></button>
+                </div>
+                <div *ngIf="col.field !== ''">
+                    {{rowData[col.field]}}
+                </div>
             </td>
         </tr>
     </ng-template>

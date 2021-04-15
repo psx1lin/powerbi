@@ -27,6 +27,8 @@
                             class="p-button-rounded p-button-danger" (click)="doRemoveUser(rowData);"></button>
                         <button pButton pRipple type="button" icon="pi pi-users" title="所屬群組"
                             class="p-button-rounded p-button-secondary" (click)="doUserGroups(rowData);"></button>
+                        <button pButton pRipple type="button" icon="pi pi-user-plus" title="加入群組"
+                            class="p-button-rounded p-button-success" (click)="doGroupAddUsers(rowData);"></button>
                     </div>
                     <div *ngSwitchDefault>{{rowData[col.field]}}</div>
                 </div>

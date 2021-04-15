@@ -22,6 +22,11 @@ export class RestService {
     const url =  URLs.Url_GetOAUser +  e ;
     return this.http.get(url);
   }
+  
+  GetOARecautocomplete(e): any {
+    const url =  URLs.Url_GetOARecautocomplete +  e ;
+    return this.http.get(url);
+  }
 
   GetAllUser(e): any {
     const url =  URLs.Url_GetAllUser +  e ;

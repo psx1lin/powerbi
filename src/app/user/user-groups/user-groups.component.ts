@@ -4,6 +4,8 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { PBIUSER } from 'src/app/Modals/pbiuser.interface';
 import { ConfirmationService, Message } from 'primeng/api';
+import { PBIGROUPUSERS } from 'src/app/Modals/pbigroup.interface';
+import { ResultRec } from 'src/app/Modals/info.interface';
 
 @Component({
   selector: 'app-user-groups',
@@ -24,6 +26,7 @@ export class UserGroupsComponent implements OnInit {
       { field: 'SamAccountName', header: '群組代號' },
       { field: 'Name', header: '群組名稱' },
       { field: 'Description', header: '群組描述' },
+      { field: '', header: '操作' },
     ];
     this.getData(this.config.data.pbiuser);
   }
@@ -44,6 +47,33 @@ export class UserGroupsComponent implements OnInit {
   doQuery(e) {
     this.getData(this.config.data.pbigroup);
   }
+
+  doGroupRemoveUser(pbigroup) {
+    this.isSpanner = true;
+    const pbiGROUPUSERS: PBIGROUPUSERS = {
+        pg: pbigroup,
+        p: [this.config.data.pbiuser]
+    };
+    const obs$ = this.rest.GroupRemoveUsers(pbiGROUPUSERS);
+    obs$.subscribe(res => {
+            const resData: ResultRec = res;
+            if (resData.status === 'ok') {
+              this.getData(this.config.data.pbigroup);
+              const msg = '刪除成功';
+              this.addMessages([{severity: 'info', summary: '檔案訊息', detail: msg}]);
+            } else {
+              const msg = '刪除失敗 GroupRemoveUsers:' + resData.content;
+              this.addMessages([{severity: 'error', summary: '檔案訊息', detail: msg}]);
+            }
+            this.isSpanner = false;
+          }, error => {
+            this.isSpanner = false;
+            const msg = '刪除失敗 GroupRemoveUsers:' + error.message;
+            this.addMessages([{severity: 'error', summary: '檔案訊息', detail: msg}]);
+    });
+
+  }
+
 
   addMessages(msgs: Message[]): void {
     this.msgs = msgs;

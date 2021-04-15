@@ -10,6 +10,7 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PBIUSER } from '../Modals/pbiuser.interface';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserGroupsComponent } from './user-groups/user-groups.component';
+import { UserAddgroupComponent } from './user-addgroup/user-addgroup.component';
 
 @Component({
   selector: 'app-user',
@@ -154,6 +155,25 @@ export class UserComponent implements OnInit, OnDestroy {
             this.isSpanner = false;
             const msg = '刪除失敗 RemoveUser:' + error.message;
             this.addMessages([{severity: 'error', summary: '檔案訊息', detail: msg}]);
+    });
+  }
+
+  doGroupAddUsers(pbiuser) {
+    this.ref = this.dialogService.open(UserAddgroupComponent, {
+      data: {
+        pbiuser
+      },
+      header: `${pbiuser.SamAccountName + pbiuser.DisplayName} 加入群組`,
+      width: '50%',
+      contentStyle: { "max-height": "500px", "overflow": "auto" },
+      baseZIndex: 10000
+    });
+
+    this.ref.onClose.subscribe((pbiuser: PBIUSER) => {
+      if (pbiuser) {
+        const msg = pbiuser.Name;
+        this.addMessages([{ severity: 'error', summary: '更新訊息', detail: msg }]);
+      }
     });
   }
 

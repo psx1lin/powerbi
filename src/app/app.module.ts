@@ -31,6 +31,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {PickListModule} from 'primeng/picklist';
 import {TabViewModule} from 'primeng/tabview';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
@@ -52,6 +53,7 @@ import { UserAddComponent } from './user/user-add/user-add.component';
 import { UsergroupAddComponent } from './usergroup/usergroup-add/usergroup-add.component';
 import { GroupDetailComponent } from './usergroup/group-detail/group-detail.component';
 import { UserGroupsComponent } from './user/user-groups/user-groups.component';
+import { UserAddgroupComponent } from './user/user-addgroup/user-addgroup.component';
 
 
 // import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -77,6 +79,7 @@ import { UserGroupsComponent } from './user/user-groups/user-groups.component';
     UsergroupAddComponent,
     GroupDetailComponent,
     UserGroupsComponent,
+    UserAddgroupComponent,
   ],
   imports: [
     ClipboardModule,
@@ -99,6 +102,7 @@ import { UserGroupsComponent } from './user/user-groups/user-groups.component';
     ButtonModule,
     InputTextareaModule,
     TabViewModule,
+    AutoCompleteModule,
     DynamicDialogModule,
     ReactiveFormsModule,
     FormsModule,
