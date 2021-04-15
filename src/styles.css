@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+.cust-spinner {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    z-index: 1000000;
+}
+.cust-spinner-top {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    z-index: 1000000;
+}
+
+.cust-hr {
+    border: 2px solid rgb(67, 18, 202);
+    border-radius: 5px;
+}
+.cust-hr-blue {
+    border: 2px solid rgb(3, 39, 199);
+    border-radius: 5px;
+}
+.cust-hr-green {
+    border: 2px solid rgb(9, 216, 102);
+    border-radius: 5px;
+}
+.cust-hr-pink {
+    border: 2px solid rgb(189, 13, 151);
+    border-radius: 5px;
+}
+.cust-hr-red {
+    border: 2px solid rgb(155, 4, 4);
+    border-radius: 5px;
+}

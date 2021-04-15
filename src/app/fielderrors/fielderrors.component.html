@@ -1,0 +1,13 @@
+<div class="ui-message ui-messages-error" *ngIf="fieldErrors(fieldName)">
+
+  <i class="fa fa-close"></i>
+  <span *ngIf="fieldErrors(fieldName).required">{{ niceName}} 必須輸入</span>
+  <span *ngIf="fieldErrors(fieldName).email">{{ niceName}} 必須是email格式</span>
+  <span *ngIf="fieldErrors(fieldName).minlength">{{ niceName}} 至少 {{ fieldErrors(fieldName).minlength.requiredLength }} 字元</span>
+  <span *ngIf="fieldErrors(fieldName).maxlength">{{ niceName}} 最多不可超過 {{ fieldErrors(fieldName).maxlength.requiredLength }}  字元</span>
+  <span *ngIf="fieldErrors(fieldName).pattern">{{ niceName}} 格式錯誤</span>
+  <span *ngIf="fieldErrors(fieldName).dataRange">{{ niceName}} 開始日期與結束日期不合</span>
+  <span *ngIf="fieldErrors(fieldName).passwordMatch">{{ niceName}} 密碼不一致</span>
+  <span *ngIf="fieldErrors(fieldName).oldpasswordMatch">{{ niceName}} 與新密碼不能一樣</span>
+
+</div>

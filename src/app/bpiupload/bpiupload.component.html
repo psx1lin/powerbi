@@ -1,0 +1,26 @@
+<app-menu></app-menu>
+<hr class="cust-hr-pink">
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+
+<div class="card">
+    <h3>BI檔案上傳</h3>
+    <p-fileUpload #fileUploader name="demo[]" chooseLabel="選擇上傳檔案(可多檔)" uploadLabel="上傳" cancelLabel="取消" url="{{uploadUrl}}" accept=".xlsx,.xls,.csv" maxFileSize="1000000" (onUpload)="onUpload($event)" (onBeforeUpload)="onBeforeUpload_FormData($event)" (onBeforeSend)="onBeforeSend_FormData($event)"
+        (onSelect)="onSelect($event)" (onError)="onError($event)" (onProgress)="doUploading()" multiple="multiple">
+       <ng-template let-file  let-i="index"  pTemplate='file'>
+             <div class="p-fileupload-row ng-star-inserted">
+                <div>{{file.name}}</div>
+                <div>{{file.size}} bytes</div>
+                <div><p-inputSwitch [(ngModel)]="uploadedIsPublic[i]"></p-inputSwitch>{{uploadedIsPublic[i] ? shareContent : shareNotContent}}</div>
+                <div>
+                    <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger" (click)="removeFile(file, fileUploader)"></button>
+                </div>
+            </div>        
+        </ng-template>
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes
+                    <span style="color:blue;">( {{today|date: "yyyy/MM/dd HH:mm:ss"}})</span></li>
+            </ul>
+        </ng-template>
+    </p-fileUpload>
+</div>

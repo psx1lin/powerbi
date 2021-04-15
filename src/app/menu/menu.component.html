@@ -1,0 +1,10 @@
+<p-confirmDialog header="確認資訊" icon="pi pi-exclamation-triangle" acceptLabel="確定" rejectLabel="取消"></p-confirmDialog>
+<p-menubar [model]="items">
+    <ng-template pTemplate="end">
+        <span style="
+            position: relative;
+            top: -20px;
+            right: -100px;">{{user.Username}}{{user.Name}}</span>{{myDate|date: 'yyyy-MM-dd HH:mm:ss'}}
+        <button type=" button" pButton label="登出" icon="pi pi-power-off " style="margin-left:.25em " (click)="doQuit();"></button>
+    </ng-template>
+</p-menubar>

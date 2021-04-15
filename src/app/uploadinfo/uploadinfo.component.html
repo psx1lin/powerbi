@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<hr class="cust-hr-blue">
+<p-dialog header="url複製成功" [(visible)]="display">
+    {{copyInfo}}
+</p-dialog>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+<!-- <p-confirmDialog header="確認資訊" icon="pi pi-exclamation-triangle"></p-confirmDialog> -->
+<!--button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-help cust-refresh" (click)="doRefresh($event);" style="z-index: 100000;" title="更新資料"></button -->
+<button pButton pRipple type="button" icon="pi pi-save" class="p-button-rounded p-button-warning cust-save" (click)="doSave($event);" style="z-index: 100000;" title="存檔" *ngIf="!saveHidden"></button>
+<div>
+         <label for="qFilename">檔案名：</label>
+        <input type="text"  [(ngModel)]="qFilename" pInputText class="p-mr-2 p-d-inline"  id="qFilename" />
+         <label for="qEmpno">上傳者：</label>
+        <input type="text"  [(ngModel)]="qEmpno" pInputText class="p-d-inline" /> 
+        
+      <p-dropdown [options]="qIsPublic" [(ngModel)]="selectedDD"  placeholder="選擇檔案屬性" optionLabel="name"></p-dropdown>
+        
+        
+         <button type="button" pButton label="關鍵字查詢" icon="pi pi-search" class="p-button-success" style="margin-left:.25em " (click)="doQuery('key');"></button>
+         <button type="button" pButton label="只查本人" icon="pi pi-search" class="p-button-success" style="margin-left:.25em " (click)="doQuery('self');"></button>
+</div>    
+<p-table #dt1 [columns]="cols" [value]="pbirecs" styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true" [rows]="15" [(selection)]="selectedData" dataKey="id">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [ngClass]="{'cust-th-50': col.field === 'filename', 'cust-th-15':col.field === 'op', 'cust-th-1':col.field === 'seqno' }">
+                {{col.header}}
+            </th>
+        </tr>
+        <!--tr>
+            <th>
+                <input pInputText type="text" class="p-inputtext-lg" (input)="dt1.filter($event.target.value, 'filename', 'contains')" [value]="dt1.filters['filename']?.value" placeholder="檔名關鍵字搜索" class="p-column-filter">
+            </th>
+        </tr-->
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+        <tr>
+            <td *ngFor="let col of columns;" [ngSwitch]="col.field">
+                <span *ngSwitchCase="'op'"> <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="doDeleteData(rowData)"  title="刪除檔案"
+               *ngIf="rowData['empno'] === user.Username"
+                ></button>
+                    <button pButton icon="pi pi-copy" class="p-button-rounded p-button-info" ngxClipboard [cbContent]="rowData['url']" (click)="doCopy(rowData);" title="複製url"></button>
+                </span>
+                <span *ngSwitchCase="'seqno'"></span>
+                <span *ngSwitchCase="'ispublic'">
+                <p-inputSwitch [(ngModel)]="uploadedIsPublic[rowIndex]" (onChange)="handleChange($event, rowIndex)"
+                [disabled]="rowData['empno'] !== user.Username"></p-inputSwitch>{{uploadedIsPublic[rowIndex] ? shareContent : shareNotContent}}
+                </span>
+                <span *ngSwitchDefault>{{rowData[col.field]}}</span>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

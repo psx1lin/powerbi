@@ -1,0 +1,44 @@
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+
+<div class="loginmodal-container">
+
+    <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)" class="ui-g">
+        <p-panel header="BI檔案上傳-登入" class="ui-g-12">
+
+            <div class="ui-g">
+                <label class="ui-g-12 ui-md-2" for="Username">員工代號</label>
+                <input type="text" pInputText id="Username" formControlName="Username" placeholder="輸入代號" class="ui-g-12 ui-md-5">
+                <div class="ui-g-12 ui-md-5">
+                    <at-fielderrors [form]="userform" field="Username" nicename="代號"> </at-fielderrors>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <label class="ui-g-12 ui-md-2" for="Username">OA密碼</label>
+                <input type="password" promptLabel="請輸OA入密碼" pPassword id="Password" formControlName="Password" placeholder="密碼" class="ui-g-12 ui-md-5">
+                <div class="ui-g-12 ui-md-5">
+                    <at-fielderrors [form]="userform" field="Password" nicename="密碼"> </at-fielderrors>
+                </div>
+            </div>
+
+
+
+
+            <div class="ui-g">
+                <div class="ui-g-6 ui-md-5">
+                    <button pButton label="登入" [disabled]="hasFormErrors()" icon="pi pi-check" id="idSubmit"></button>
+                </div>
+            </div>
+
+            <div class="ui-g">
+                <p style="color: blue; font-weight: bold;">使用瀏覽器軟體 Google Chrome、Firefox，並搭配 1024 x 768 以上之螢幕解析度，以獲得最佳瀏覽體驗。 </p>
+            </div>
+            <div class="ui-g">
+                v1.1
+            </div>
+
+        </p-panel>
+
+        <!-- <a href="#" (click)="do($event)" >aaaaa</a> -->
+    </form>
+</div>

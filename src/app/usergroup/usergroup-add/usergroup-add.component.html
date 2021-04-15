@@ -1,0 +1,20 @@
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+
+<h5>群組代號</h5>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="SamAccountName"> 
+    <label for="float-input">群組代號</label>
+    <small id="username2-help" class="p-error">群組代號必須是 'pbi-' 開頭</small>
+</span>
+<h5>群組名稱</h5>
+<span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="Name"> 
+    <label for="float-input">群組名稱</label>
+</span>
+<h5>群組描述</h5>
+<span class="p-float-label">
+    <textarea pInputTextarea id="float-input" [rows]="5" [cols]="50" [(ngModel)]="Description"></textarea>
+    <label for="float-input">群組描述</label>
+</span>
+<p-button label="新增" icon="pi pi-user-plus" (click)="doAdd('');" styleClass="p-button-success" ></p-button>

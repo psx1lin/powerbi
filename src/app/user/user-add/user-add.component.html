@@ -1,0 +1,11 @@
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+<span class="p-input-icon-left" style="z-index: 100000;">
+    <i class="pi pi-search"></i>
+    <input type="text" pInputText placeholder="員工代號或姓名" [(ngModel)]="searchStr" (keyup)="onKeyUpEvent($event)"  />
+</span>
+<p-button label="查詢" icon="pi pi-search" (click)="doQuery('');" [disabled]="!isSearch"></p-button>
+<div class="p-d-flex"><h3>員工代號：{{SamAccountName}}</h3></div>
+<div class="p-d-flex"><h3>姓名：{{DisplayName}}</h3></div>
+<div class="p-d-flex"><h3>歸屬部門編號：{{NewPassword}}</h3></div>
+<p-button label="新增" icon="pi pi-user-plus" (click)="doAdd('');" styleClass="p-button-success" *ngIf="isDataExist"></p-button>

@@ -1,0 +1,19 @@
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+<!-- <p-button label="查" icon="pi pi-user-plus" (click)="doQuery('');" styleClass="p-button-success" ></p-button> -->
+<p-table [columns]="cols" [value]="pbigroups" styleClass="p-datatable-striped" selectionMode="single">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
