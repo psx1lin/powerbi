@@ -19,6 +19,9 @@
          <button type="button" pButton label="關鍵字查詢" icon="pi pi-search" class="p-button-success" style="margin-left:.25em " (click)="doQuery('key');"></button>
          <button type="button" pButton label="只查本人" icon="pi pi-search" class="p-button-success" style="margin-left:.25em " (click)="doQuery('self');"></button>
 </div>    
+<p-divider align="center" >
+    <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">上傳列表</span>
+</p-divider>
 <p-table #dt1 [columns]="cols" [value]="pbirecs" styleClass="p-datatable-customers p-datatable-gridlines" [paginator]="true" [rows]="15" [(selection)]="selectedData" dataKey="id">
     <ng-template pTemplate="header" let-columns>
         <tr>

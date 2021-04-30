@@ -3,6 +3,7 @@ import { PBIGROUP } from 'src/app/Modals/pbigroup.interface';
 import { RestService } from 'src/app/services/rest.service';
 import { ConfirmationService, Message } from 'primeng/api';
 import { ResultRec } from 'src/app/Modals/info.interface';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-usergroup-add',
@@ -22,6 +23,7 @@ export class UsergroupAddComponent implements OnInit {
 
   constructor(
     private rest: RestService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -78,7 +80,9 @@ export class UsergroupAddComponent implements OnInit {
   }
 
   addMessages(msgs: Message[]): void {
-    this.msgs = msgs;
+    // this.msgs = msgs;
+    this.messageService.add({severity:msgs[0].severity, summary: msgs[0].summary, detail: msgs[0].detail});
+
   }
 
 }

@@ -4,7 +4,12 @@
 
 <div class="card">
     <h3>BI檔案上傳</h3>
-    <p-fileUpload #fileUploader name="demo[]" chooseLabel="選擇上傳檔案(可多檔)" uploadLabel="上傳" cancelLabel="取消" url="{{uploadUrl}}" accept=".xlsx,.xls,.csv" maxFileSize="1000000" (onUpload)="onUpload($event)" (onBeforeUpload)="onBeforeUpload_FormData($event)" (onBeforeSend)="onBeforeSend_FormData($event)"
+    <p-divider align="center" >
+        <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">上傳檔案</span>
+    </p-divider>
+    <p-fileUpload #fileUploader name="demo[]" chooseLabel="選擇上傳檔案(可多檔)" 
+    uploadLabel="上傳" cancelLabel="取消" url="{{uploadUrl}}" 
+    accept=".xlsx,.xls,.csv" maxFileSize="100000000" (onUpload)="onUpload($event)" (onBeforeUpload)="onBeforeUpload_FormData($event)" (onBeforeSend)="onBeforeSend_FormData($event)"
         (onSelect)="onSelect($event)" (onError)="onError($event)" (onProgress)="doUploading()" multiple="multiple">
        <ng-template let-file  let-i="index"  pTemplate='file'>
              <div class="p-fileupload-row ng-star-inserted">
@@ -17,6 +22,7 @@
             </div>        
         </ng-template>
         <ng-template pTemplate="content">
+            <div style="color:red;font-weight: bold;">檔案可拖拉放在此(只能是 .xlsx,.xls,.csv)</div>
             <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes
                     <span style="color:blue;">( {{today|date: "yyyy/MM/dd HH:mm:ss"}})</span></li>

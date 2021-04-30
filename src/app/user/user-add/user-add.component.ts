@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PBIUSER } from 'src/app/Modals/pbiuser.interface';
 import { RestService } from 'src/app/services/rest.service';
 import { ConfirmationService, Message } from 'primeng/api';
+import {MessageService} from 'primeng/api';
 import { ResultRec } from 'src/app/Modals/info.interface';
 
 
@@ -23,6 +24,7 @@ export class UserAddComponent implements OnInit {
 
   constructor(
     private rest: RestService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -90,7 +92,9 @@ export class UserAddComponent implements OnInit {
   }
 
   addMessages(msgs: Message[]): void {
-    this.msgs = msgs;
+    // this.msgs = msgs;
+    this.messageService.add({severity:msgs[0].severity, summary: msgs[0].summary, detail: msgs[0].detail});
+
   }
 
 }

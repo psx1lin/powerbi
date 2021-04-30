@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { LoginDataService } from 'src/app/services/login-data.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-user-addgroup',
@@ -31,7 +32,8 @@ export class UserAddgroupComponent implements OnInit {
     private rest: RestService,
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
-    private ref: DynamicDialogRef, private config: DynamicDialogConfig) { }
+    private ref: DynamicDialogRef, private config: DynamicDialogConfig,
+    private messageService: MessageService) { }
 
 
   ngOnInit(): void {
@@ -89,7 +91,9 @@ export class UserAddgroupComponent implements OnInit {
 
 
   addMessages(msgs: Message[]): void {
-    this.msgs = msgs;
+    // this.msgs = msgs;
+    // this.messageService.add({severity:'success', summary: 'Success', detail: msgs[0].detail});
+    this.messageService.add({severity:msgs[0].severity, summary: msgs[0].summary, detail: msgs[0].detail});
   }
 
   ngOnDestroy() {

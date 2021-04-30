@@ -1,5 +1,9 @@
 .cust-refresh-button {
     position: fixed;
-    top: 60%;
+    top: 75%;
     left: 93%;
 }
+.tabview-custom-remove {    
+    background-color: antiquewhite !important;
+}
+

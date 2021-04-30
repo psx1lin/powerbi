@@ -31,6 +31,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {PickListModule} from 'primeng/picklist';
 import {TabViewModule} from 'primeng/tabview';
+import {DividerModule} from 'primeng/divider';
 import {AutoCompleteModule} from 'primeng/autocomplete';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 
@@ -102,6 +103,7 @@ import { UserAddgroupComponent } from './user/user-addgroup/user-addgroup.compon
     ButtonModule,
     InputTextareaModule,
     TabViewModule,
+    DividerModule,
     AutoCompleteModule,
     DynamicDialogModule,
     ReactiveFormsModule,

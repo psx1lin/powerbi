@@ -3,10 +3,10 @@
 <p-messages [(value)]="msgs" [enableService]="false"></p-messages>
 <p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
 
-<p-tabView styleClass="tabview-custom">
+<p-tabView styleClass="tabview-custom-remove">
     <p-tabPanel>
         <ng-template pTemplate = "header">
-            <i class="pi pi-plus-circle"></i>
+            <i class="pi pi-user-plus"></i>
             <span>加入使用者</span>
         </ng-template>
         <p-dropdown [options]="groups" [(ngModel)]="selectedGroup"  placeholder="請選擇要加入群組" 
@@ -20,8 +20,11 @@
                 </div>
             </ng-template>
         </p-dropdown>
+        <p-divider align="center" >
+            <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">新增人員</span>
+        </p-divider>
         <p-pickList [source]="list1" [target]="list2" 
-        sourceHeader="員工" targetHeader="選定人員" filterBy="Name,DisplayName,NewPassword"
+        sourceHeader="員工" targetHeader="已選定要加入群組人員" filterBy="Name,DisplayName,NewPassword"
         [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
         sourceFilterPlaceholder="關鍵字:員工代號或姓名或單位" targetFilterPlaceholder="關鍵字:員工代號或姓名或單位">
             <ng-template let-data pTemplate="item">
@@ -37,13 +40,13 @@
         
     </p-tabPanel>
 
-    <p-tabPanel header="Header II">
+    <p-tabPanel header="Header II"  >
         <ng-template pTemplate = "header">
-            <i class="pi pi-times-circle"></i>
+            <i class="pi pi-user-minus"></i>
             <span>移除使用者</span>
         </ng-template>
         <p-dropdown [options]="groups" [(ngModel)]="selectedGroup1"  
-        placeholder="請選擇群組" 
+        placeholder="請選擇要移除群組" 
         optionLabel="SamAccountName"
         [filter]="true" filterBy="SamAccountName" 
         (onChange)="doChange();">
@@ -54,8 +57,11 @@
                 </div>
             </ng-template>
         </p-dropdown>
+        <p-divider align="center" >
+            <span class="p-tag" style="color:white;font-size: medium;background-color: rgb(224, 30, 30);">移出人員</span>
+        </p-divider>
         <p-pickList [source]="list3" [target]="list4" 
-        sourceHeader="群組人員" targetHeader="選定要移除人員" filterBy="Name,DisplayName,NewPassword"
+        sourceHeader="群組人員" targetHeader="已選定要移出群組人員" filterBy="Name,DisplayName,NewPassword"
         [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
         sourceFilterPlaceholder="關鍵字:員工代號或姓名或單位" targetFilterPlaceholder="關鍵字:員工代號或姓名或單位">
             <ng-template let-data pTemplate="item">
