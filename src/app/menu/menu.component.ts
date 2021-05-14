@@ -85,6 +85,19 @@ export class MenuComponent implements OnInit {
         ]
       });
     }
+    if (this.secu.secu > 1) {
+      this.items.push({
+        label: '指標',
+        icon: 'pi pi-fw pi-user-edit',
+        items: [
+          {
+            label: '指標列表',
+            icon: 'pi pi-fw pi-user',
+            routerLink: '/api'
+          },          
+        ]
+      });
+    }
   }
 
   doQuit(): void {

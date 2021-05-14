@@ -1,4 +1,5 @@
 export const SERVERpbiAD = 'http://pbi.mmh.org.tw/pbirole/mmh/pbiad';
+export const SERVERpbiAPI = 'http://pbi.mmh.org.tw/pbirole/mmh/pbiapi';
 export const SERVERpbi = 'https://oap2.mmh.org.tw/pfm';
 export const SERVEReduapi = 'https://oap2.mmh.org.tw/eduapi';
 export const SERVERdebug = 'http://localhost:3370';
@@ -6,6 +7,15 @@ export const SERVERdebug = 'http://localhost:3370';
 export const URLs = {
 
 
+  // powerbiapi
+
+  Url_GetCatalogItems: `${SERVERpbiAPI}/GetCatalogItems?id=`,
+  Url_GetCatalogItem: `${SERVERpbiAPI}/GetCatalogItem?id=`,
+  Url_GetItemPoliciesById: `${SERVERpbiAPI}/GetItemPoliciesById?id=`,
+  Url_GetTreeNode: `${SERVERpbiAPI}/GetTreeNode?id=`,
+  Url_GetTreeData: `${SERVERpbiAPI}/GetTreeData?id=`,
+  Url_GetCacheRefreshPlan: `${SERVERpbiAPI}/GetCacheRefreshPlan?id=`,
+  
   // powerbi
   Url_Upload: `${SERVERpbi}/api/pbi/UploadFile`,
   Url_GetUploadInfo: `${SERVERpbi}/api/pbi/GetUploadInfo/`,

@@ -1,0 +1,51 @@
+.cust-report-css {
+    color: blue;
+    font-size:small;
+    font-weight: bold;
+}
+
+
+
+.cust-switch {
+    vertical-align: top;
+    margin: 10px;
+}
+
+.cust-icon-color {
+   color: red !important;
+   margin: 5px;
+}
+.cust-table-id {
+    width: 1px;
+}
+
+.cust-table-type {
+    width: 10%;
+}
+.cust-table-name {
+    width: 30%;
+}
+.cust-table-x {
+    width: 10%;
+}
+
+
+.cust-tree-file {
+    color:limegreen;
+    vertical-align:super;
+}
+
+.cust-tree-folder {
+    color:crimson;
+    vertical-align: super;
+}
+
+.cust-tree-file-detail {
+    color:limegreen;
+    margin-right: 10px;
+}
+
+.cust-tree-folder-detail {
+    color:crimson;
+    margin-right: 10px;
+}

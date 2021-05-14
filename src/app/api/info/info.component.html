@@ -1,0 +1,20 @@
+<p>{{data.Name}} 內容</p>
+
+<h5>Id：{{data.Id}}</h5>
+<h5>類型：{{data.Type}} </h5>
+<h5>路徑：{{data.Path}} </h5>
+<h5>size：{{data.Size}} </h5>
+<h5>生成資訊：{{data.CreatedBy}} [ {{data.CreatedDate | date:'yyyy-MM-dd hh:mm:ss'}} ]</h5>
+<h5>修改資訊：{{data.ModifiedBy}} [ {{data.ModifiedDate | date:'yyyy-MM-dd hh:mm:ss'}} ]</h5>
+<p-divider align="center">
+    <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">
+        更新資訊</span>
+</p-divider>
+<div *ngFor="let item of cacheRefreshPlanValue">   
+    <h5>更新時程：{{item.ScheduleDescription}}</h5>
+    <h5>最後更新時間:{{item.LastRunTime | date:'yyyy-MM-dd hh:mm:ss'}}</h5>
+    <h5 *ngIf="!item.LastStatus.includes('Completed')">更新結果:<span style="color: red;font-weight: bold; margin-left: 10px;">失敗!!, code:{{item.LastStatus}}</span></h5>
+    <h5 *ngIf="item.LastStatus.includes('Completed')">更新結果:<span style="color: blue; font-weight: bold; margin-left: 10px;">成功..</span></h5>
+    <p-divider align="center">
+    </p-divider>
+</div>

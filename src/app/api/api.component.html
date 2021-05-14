@@ -1,0 +1,99 @@
+<app-menu></app-menu>
+<hr class="cust-hr-green">
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+<p-divider align="center">
+    <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">
+        指標列表</span>
+    <span class="p-tag"
+        style="color:rgba(243, 10, 10, 0.63);font-size: medium;background-color: rgb(104, 206, 164);">總目錄:{{totfoldercnt}}
+        總指標:{{totpbireportcnt}}</span>
+</p-divider>
+<p-tabView styleClass="tabview-custom-remove">
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i class="pi pi-sliders-h cust-icon-color"></i>
+            <span>指標總表</span>
+        </ng-template>
+        <span class="cust-switch">全關</span>
+        <p-inputSwitch [(ngModel)]="treeExpanSwitch" (onChange)="doTreeExpanSwitchChange(2,$event)"></p-inputSwitch>
+        <span class="cust-switch">全開</span>
+        <p-tree [value]="filesTreeData" [emptyMessage]="'無資料!!!'" [filter]="true" filterPlaceholder="關鍵字搜索">
+
+            <ng-template let-node pTemplate="default">
+                <i class="pi pi-file cust-tree-file" *ngIf="!node.typex.includes('Folder')"></i>
+                <i class="pi pi-folder cust-tree-folder" *ngIf="node.typex.includes('Folder')"></i>
+                <button pButton pRipple type="button" title="查明細"  
+                 label="{{node.label}}{{ node.typex.includes('Folder') ? '［' + node.totchildrencnt + '］' : '' }}" 
+                    class="p-button-info p-button-text"></button>                            
+                <button pButton pRipple type="button" title="查明細" icon="pi pi-eye" (click)="doAdd(node);"
+                    class="p-button-rounded p-button-help p-button-text"></button>
+                <button pButton pRipple type="button" title="查權限" icon="pi pi-key" (click)="doPolicy(node);"
+                    class="p-button-rounded p-button-help p-button-text"></button>
+            </ng-template>
+
+        </p-tree>
+
+    </p-tabPanel>
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i class="pi pi-sitemap cust-icon-color"></i>
+            <span>指標明細列表</span>
+        </ng-template>
+        <p-treeTable #tt [value]="files1" [columns]="cols" selectionMode="single">
+            <ng-template pTemplate="caption">
+                <div style="text-align: right">
+                    <!-- <span class="cust-switch">全關</span><p-inputSwitch [(ngModel)]="treeExpanSwitch" (onChange)="doTreeExpanSwitchChange(1,$event)"></p-inputSwitch><span  class="cust-switch">全開</span> -->
+                    <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                    <input type="text" pInputText  size="50"  placeholder="關鍵字搜索"
+                        (input)="tt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr [ttRow]="rowNode">
+                    <th *ngFor="let col of columns" [ttSortableColumn]="col.field" class="{{col.css}}"  >
+                    <div *ngIf="col.field !== 'id' ">
+                        {{col.header}}
+                        <p-treeTableSortIcon [field]="col.field"></p-treeTableSortIcon>
+                    </div>
+                        
+                    </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of cols">
+                        <input pInputText type="text" placeholder="關鍵字搜索" *ngIf=" col.field !== 'id' "
+                            (input)="tt.filter($event.target.value, col.field, col.filterMatchMode)" style="width:100px;">
+                    </th>
+                    <th style="width: 8rem">
+                        <button pButton pRipple type="button" icon="pi pi-cog"
+                            class="p-button-rounded p-button-success p-button-text"></button>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData" let-columns="columns">
+                <tr>
+                    <td *ngFor="let col of columns; let i = index">
+                        <div *ngIf=" col.field !== 'id' ">
+                            <p-treeTableToggler [rowNode]="rowNode" *ngIf="i == 0 "></p-treeTableToggler>
+                            <span *ngIf="!rowData['type'].includes('資料匣')" class="cust-report-css">
+                                <i class="pi pi-file  cust-tree-file-detail"  *ngIf="i == 0 "></i>{{rowData[col.field]}} 
+                            </span>
+                            <span *ngIf="rowData['type'].includes('資料匣')">
+                                <i class="pi pi-folder  cust-tree-folder-detail"   *ngIf="i == 0 "></i>{{rowData[col.field]}}
+                                {{ col.field == "name" ? '［' + rowData["totchildrencnt"] + '］' : ''  }}
+                            </span>
+                        </div>
+                    </td>
+                    <td>
+                        <button (click)="doAdd(rowData);" pButton pRipple type="button" icon="pi pi-eye" title="查明細"
+                            class="p-button-rounded p-button-info p-button-text"></button>
+                        <button (click)="doPolicy(rowData);" pButton pRipple type="button" icon="pi pi-key" title="查權限"
+                            class="p-button-rounded p-button-danger p-button-text"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-treeTable>
+
+    </p-tabPanel>
+
+</p-tabView>

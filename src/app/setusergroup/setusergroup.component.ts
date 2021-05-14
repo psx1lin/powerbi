@@ -51,7 +51,12 @@ export class SetusergroupComponent implements OnInit {
       return;
     }
     let s = "";
-    this.list2.every(x => s += `,${x.Name}`);
+    let cnt = 0;
+    s = this.list2.length > 0 ? `${this.list2[0].Name}..共${this.list2.length}人` : "";
+    if (s===""){
+      this.addMessages([{ severity: 'error', summary: '讀取訊息', detail: "無選定人員" }]);
+      return ;
+    }
     this.confirmationService.confirm({
       message: `新增人員${s}?`,
       header: `群組:${this.selectedGroup.Name}(${this.selectedGroup.Description})`,
@@ -69,7 +74,11 @@ export class SetusergroupComponent implements OnInit {
       return;
     }
     let s = "";
-    this.list4.every(x => s += `,${x.Name}`);
+    s = this.list4.length > 0 ? `${this.list4[0].Name}..共${this.list4.length}人` : "";
+    if (s===""){
+      this.addMessages([{ severity: 'error', summary: '讀取訊息', detail: "無選定人員" }]);
+      return ;
+    }
     this.confirmationService.confirm({
       message: `移除人員${s}?`,
       header: `群組:${this.selectedGroup1.Name}(${this.selectedGroup1.Description})`,

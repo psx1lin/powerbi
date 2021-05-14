@@ -33,6 +33,8 @@ import {PickListModule} from 'primeng/picklist';
 import {TabViewModule} from 'primeng/tabview';
 import {DividerModule} from 'primeng/divider';
 import {AutoCompleteModule} from 'primeng/autocomplete';
+import {TreeTableModule} from 'primeng/treetable';
+import {TreeModule} from 'primeng/tree';
 import {DialogService, DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import { FielderrorsComponent } from './fielderrors/fielderrors.component';
@@ -55,6 +57,9 @@ import { UsergroupAddComponent } from './usergroup/usergroup-add/usergroup-add.c
 import { GroupDetailComponent } from './usergroup/group-detail/group-detail.component';
 import { UserGroupsComponent } from './user/user-groups/user-groups.component';
 import { UserAddgroupComponent } from './user/user-addgroup/user-addgroup.component';
+import { ApiComponent } from './api/api.component';
+import { InfoComponent } from './api/info/info.component';
+import { PolicyComponent } from './api/policy/policy.component';
 
 
 // import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -81,6 +86,9 @@ import { UserAddgroupComponent } from './user/user-addgroup/user-addgroup.compon
     GroupDetailComponent,
     UserGroupsComponent,
     UserAddgroupComponent,
+    ApiComponent,
+    InfoComponent,
+    PolicyComponent,
   ],
   imports: [
     ClipboardModule,
@@ -104,6 +112,8 @@ import { UserAddgroupComponent } from './user/user-addgroup/user-addgroup.compon
     InputTextareaModule,
     TabViewModule,
     DividerModule,
+    TreeTableModule,
+    TreeModule,
     AutoCompleteModule,
     DynamicDialogModule,
     ReactiveFormsModule,

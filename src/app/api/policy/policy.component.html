@@ -1,0 +1,32 @@
+<hr class="cust-hr">
+<p-messages [(value)]="msgs" [enableService]="false"></p-messages>
+<p-progressSpinner *ngIf="isSpanner" [class]="'cust-spinner'"></p-progressSpinner>
+<p-divider align="center">
+    <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">
+        指標權限列</span>
+</p-divider>
+<p-table [columns]="cols" [value]="itemPolicy.Policies" styleClass="p-datatable-striped" selectionMode="single">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" class="{{col.css}}">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td>
+                {{rowData["GroupUserName"]}}
+            </td>
+            <td>
+                <ul>
+                    <li *ngFor="let role of rowData['Roles']">{{role.Name}}-{{role.Description}}</li>
+                </ul>
+            </td>
+            <td>
+                <button (click)="doRole(rowData);" pButton pRipple type="button" icon="pi pi-save" title="權限存檔"
+                class="p-button-rounded p-button-info p-button-text"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

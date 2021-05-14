@@ -6,10 +6,12 @@
 <p-tabView styleClass="tabview-custom-remove">
     <p-tabPanel>
         <ng-template pTemplate = "header">
-            <i class="pi pi-user-plus"></i>
+            <i class="pi pi-user-plus  cust-icon-color"></i>
             <span>加入使用者</span>
         </ng-template>
         <p-dropdown [options]="groups" [(ngModel)]="selectedGroup"  placeholder="請選擇要加入群組" 
+        [style]="{'background-color':'#FFA07A'}"
+        [scrollHeight]="'350px'"
         optionLabel="SamAccountName"
         [filter]="true" filterBy="SamAccountName" (onChange)="doSelectedUsers();"
         >
@@ -23,9 +25,16 @@
         <p-divider align="center" >
             <span class="p-tag" style="color:black;font-size: medium;background-color: rgb(104, 206, 164);">新增人員</span>
         </p-divider>
-        <p-pickList [source]="list1" [target]="list2" 
-        sourceHeader="員工" targetHeader="已選定要加入群組人員" filterBy="Name,DisplayName,NewPassword"
-        [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
+        <p-pickList 
+        [source]="list1" 
+        [target]="list2" 
+        sourceHeader="員工" 
+        targetHeader="已選定要加入群組人員共: {{list2.length}} 人" 
+        filterBy="SamAccountName,DisplayName,NewPassword"
+        [showTargetFilter]="true"
+        [dragdrop]="true" [responsive]="true" 
+        [sourceStyle]="{'height':'30rem'}" 
+        [targetStyle]="{'height':'30rem','background-color':'#FAFAD2'}"
         sourceFilterPlaceholder="關鍵字:員工代號或姓名或單位" targetFilterPlaceholder="關鍵字:員工代號或姓名或單位">
             <ng-template let-data pTemplate="item">
                 <div>
@@ -34,7 +43,7 @@
             </ng-template>
         </p-pickList>
         <p-button label="新增至群組" icon="pi pi-user-plus" (click)="confirm();" styleClass="p-button-success"
-        [disabled]="list2.length === 0  "
+        [disabled]="list2.length === 0 || selectedGroup.Name === ''  "
         ></p-button>
         <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-help cust-refresh-button"></button>
         
@@ -42,11 +51,13 @@
 
     <p-tabPanel header="Header II"  >
         <ng-template pTemplate = "header">
-            <i class="pi pi-user-minus"></i>
+            <i class="pi pi-user-minus  cust-icon-color"></i>
             <span>移除使用者</span>
         </ng-template>
         <p-dropdown [options]="groups" [(ngModel)]="selectedGroup1"  
         placeholder="請選擇要移除群組" 
+        [style]="{'background-color':'#FFA07A'}"
+        [scrollHeight]="'350px'"
         optionLabel="SamAccountName"
         [filter]="true" filterBy="SamAccountName" 
         (onChange)="doChange();">
@@ -61,8 +72,10 @@
             <span class="p-tag" style="color:white;font-size: medium;background-color: rgb(224, 30, 30);">移出人員</span>
         </p-divider>
         <p-pickList [source]="list3" [target]="list4" 
-        sourceHeader="群組人員" targetHeader="已選定要移出群組人員" filterBy="Name,DisplayName,NewPassword"
-        [dragdrop]="true" [responsive]="true" [sourceStyle]="{'height':'30rem'}" [targetStyle]="{'height':'30rem'}"
+        sourceHeader="群組人員" targetHeader="已選定要移出群組人員: {{list4.length}} 人" filterBy="Name,DisplayName,NewPassword"
+        [dragdrop]="true" [responsive]="true" 
+        [sourceStyle]="{'height':'30rem'}" 
+        [targetStyle]="{'height':'30rem','background-color':'#FFF0F5'}"
         sourceFilterPlaceholder="關鍵字:員工代號或姓名或單位" targetFilterPlaceholder="關鍵字:員工代號或姓名或單位">
             <ng-template let-data pTemplate="item">
                 <div>
@@ -71,7 +84,7 @@
             </ng-template>
         </p-pickList>
         <p-button label="確定移除" icon="pi pi-user-plus" (click)="confirm1();" styleClass="p-button-success"
-        [disabled]="list4.length === 0  "
+        [disabled]="list4.length === 0 || selectedGroup1.Name === ''  "
         ></p-button>
         <button pButton pRipple type="button" icon="pi pi-refresh" class="p-button-rounded p-button-help cust-refresh-button"></button>
         

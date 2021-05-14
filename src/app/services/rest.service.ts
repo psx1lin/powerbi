@@ -13,6 +13,36 @@ export class RestService {
 
 
 
+  GetCacheRefreshPlan(e): any {
+    const url =  URLs.Url_GetCacheRefreshPlan +  e ;
+    return this.http.get(url);
+  }
+
+  GetTreeNode(e): any {
+    const url =  URLs.Url_GetTreeNode +  e ;
+    return this.http.get(url);
+  }
+
+  GetTreeData(e): any {
+    const url =  URLs.Url_GetTreeData +  e ;
+    return this.http.get(url);
+  }
+  
+  GetCatalogItem(e): any {
+    const url =  URLs.Url_GetCatalogItem +  e ;
+    return this.http.get(url);
+  }
+
+  GetItemPoliciesById(e): any {
+    const url =  URLs.Url_GetItemPoliciesById +  e ;
+    return this.http.get(url);
+  }
+
+  GetCatalogItems(e): any {
+    const url =  URLs.Url_GetCatalogItems +  e ;
+    return this.http.get(url);
+  }
+
   GetUploadInfo(e): any {
     const url =  URLs.Url_GetUploadInfo +  e ;
     return this.http.get(url);

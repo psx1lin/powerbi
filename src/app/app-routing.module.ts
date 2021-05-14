@@ -1,5 +1,6 @@
 import { NgModule, InjectionToken } from '@angular/core';
 import { Routes, RouterModule, ActivatedRouteSnapshot } from '@angular/router';
+import { ApiComponent } from './api/api.component';
 import { BpiuploadComponent } from './bpiupload/bpiupload.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'usergroup', component: UsergroupComponent },
   { path: 'setusergroup', component: SetusergroupComponent },
+  { path: 'api', component: ApiComponent },
 ];
 
 @NgModule({
