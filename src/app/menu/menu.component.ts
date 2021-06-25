@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-file',
         items: [
           {
-            label: '上傳excel檔',
+            label: '上傳檔案',
             icon: 'pi pi-fw pi-upload',
             routerLink: '/pbiupload'
           },
@@ -94,7 +94,7 @@ export class MenuComponent implements OnInit {
             label: '指標列表',
             icon: 'pi pi-fw pi-user',
             routerLink: '/api'
-          },          
+          },
         ]
       });
     }
